@@ -57,7 +57,7 @@ function Login({ getUser }) {
   return (
     <div className="Login">
       <div className="container">
-        <img src="/public/imgs/signUpImg.png" alt="" />
+        <img src="/imgs/signUpImg.png" alt="" />
 
         <div className={Isempty ? "login Isempty" : "login"}>
           <h1>Log in to Exclusive</h1>

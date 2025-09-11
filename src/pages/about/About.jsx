@@ -21,7 +21,7 @@ function About() {
 </div>
 
 <div className="aboutTeg-card_img">
-    <img src="/public/imgs/about_img.png" alt="" />
+    <img src="/imgs/about_img.png" alt="" />
 </div>
 </div>
     </div>
@@ -70,7 +70,7 @@ function About() {
 <div className="about_UserCards">
 <div className="about_UserCard">
 <div className="about_UserCardImg">
-    <img src="/public/imgs/aboutSec2_img1.png" alt="" />
+    <img src="/imgs/aboutSec2_img1.png" alt="" />
 </div>
 <h2>Tom Cruise</h2>
 <p>Founder & Chairman</p>
@@ -82,7 +82,7 @@ function About() {
 </div>
 <div className="about_UserCard">
 <div className="about_UserCardImg">
-    <img src="/public/imgs/aboutSec2_img2.png" alt="" />
+    <img src="/imgs/aboutSec2_img2.png" alt="" />
 </div>
 <h2>Emma Watson</h2>
 <p>Managing Director</p>
@@ -94,7 +94,7 @@ function About() {
 </div>
 <div className="about_UserCard">
 <div className="about_UserCardImg">
-    <img src="/public/imgs/aboutSec2_img3.png" alt="" />
+    <img src="/imgs/aboutSec2_img3.png" alt="" />
 </div>
 <h2>Will Smith</h2>
 <p>Product Designer</p>
@@ -112,17 +112,17 @@ function About() {
           <div className="container">
 
 <div className="box7">
-  <img src="/public/imgs/section7_svg.svg" alt="" />
+  <img src="/imgs/section7_svg.svg" alt="" />
   <h3>FREE AND FAST DELIVERY</h3>
   <p>Free delivery for all orders over $140</p>
 </div>
 <div className="box7">
-  <img src="/public/imgs/section7_svg1.svg" alt="" />
+  <img src="/imgs/section7_svg1.svg" alt="" />
   <h3>24/7 CUSTOMER SERVICE</h3>
   <p>Friendly 24/7 customer support</p>
 </div>
 <div className="box7">
-  <img src="/public/imgs/section7_svg2.svg" alt="" />
+  <img src="/imgs/section7_svg2.svg" alt="" />
   <h3>MONEY BACK GUARANTEE</h3>
   <p>We reurn money within 30 days</p>
 </div>

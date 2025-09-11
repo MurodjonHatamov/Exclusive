@@ -85,7 +85,7 @@ function CheckOut() {
           <div className="order-items">
             <div className="order-item">
                 <div className="orderImg">
-                    <img src="/public/imgs/cardImg.png" alt="" />
+                    <img src="/imgs/cardImg.png" alt="" />
                     <span>LCD Monitor</span>
                 </div>
            
@@ -93,7 +93,7 @@ function CheckOut() {
             </div>
             <div className="order-item">
                 <div className="orderImg">
-                    <img src="/public/imgs/cardImg.png" alt="" />
+                    <img src="/imgs/cardImg.png" alt="" />
                     <span>LCD Monitor</span>
                 </div>
            
