@@ -12,7 +12,7 @@ function Footer() {
       <p>Get 10% off your first order</p>
 <div className="email">
 <input placeholder='Enter your email' type="email" />
-<img src="/public/imgs/yuborish.svg" alt="" />
+<img src="/imgs/yuborish.svg" alt="" />
 </div>
     </div>
     <div className="footer-box">
@@ -40,11 +40,11 @@ function Footer() {
   <span>Download App</span>
   <p>Save $3 with App New User Only</p>
 <div className="qr">
-<img src="/public/imgs/footerImgQr.png" alt="" />
-<img src="/public/imgs/footer_linkSvg.svg" alt="" />
+<img src="/imgs/footerImgQr.png" alt="" />
+<img src="/imgs/footer_linkSvg.svg" alt="" />
 
 </div>
-<img src="/public/imgs/footer_linkSvg2.svg" alt="" />
+<img src="/imgs/footer_linkSvg2.svg" alt="" />
 </div>
 
 

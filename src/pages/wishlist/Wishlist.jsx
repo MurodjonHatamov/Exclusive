@@ -22,7 +22,7 @@ const [likes,setLikes]=useState(true)
     ))
   ) : (
     <div className="loader-wishlist">
-      <img src="/public/imgs/wishlist.png" alt="wishlist" />
+      <img src="/imgs/wishlist.png" alt="wishlist" />
       <h3>Sevimli mahsulotlar yo'q</h3>
       <p>Mahsulotdagi <FaHeart className='FaHeart'/> belgisi bilan qo'shing️</p>
     </div>
