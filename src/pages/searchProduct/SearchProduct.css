@@ -1,0 +1,14 @@
+.SearchProduct .container>.prodactCards{
+display: flex;
+align-items: center;
+flex-wrap: wrap;
+gap: 20px;
+}
+.SearchProduct .container{
+    padding: 50px 10px;
+}
+
+
+.SearchProduct .container h2{
+    margin-bottom: 20px;
+}

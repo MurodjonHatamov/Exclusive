@@ -1,0 +1,127 @@
+.SignUp .container{
+    padding: 50px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+/* 
+.SignUp .container img{
+    width: 600px;
+} */
+
+.addAcaunt-card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+form button .FcGoogle{
+font-size: 26px;
+
+}
+
+form button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    width: 100%;
+    height: 45px;
+    transition: all 0.3s ease; /* Smooth transition for state changes */
+}
+
+form .addAccauntBtn {
+    background-color: var(--red);
+    color: white;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* For the ripple effect */
+}
+
+/* Loading state styles */
+form .addAccauntBtn.loading {
+    pointer-events: none; /* Disable clicks during loading */
+    opacity: 0.8;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.addAccauntBtn .spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    display: none; /* Hidden by default */
+}
+
+.addAccauntBtn.loading .spinner {
+    display: block; /* Show spinner during loading */
+}
+
+.addAccauntBtn.loading span {
+    display: none; /* Hide text during loading */
+}
+
+/* Optional: Add a ripple effect on click */
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.addAccauntBtn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.addAccauntBtn:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+form .addAccauntBtn:active{
+    background-color: rgb(148, 23, 23);
+}
+
+form .googleAccaunt{
+    background-color: white;
+    color: black;
+    border-radius: 3px;
+    border: 2px solid #8a8787a5;
+}
+
+form input{
+    border: none;
+    border-bottom: 2px solid #8a8787a5;
+    padding: 6px 2px;
+}
+
+form  .clickLogin{
+    cursor: pointer;
+}
+
+
+

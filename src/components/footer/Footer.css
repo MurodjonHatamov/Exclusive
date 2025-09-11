@@ -1,0 +1,48 @@
+
+footer{
+    background-color: #000000;
+    color: white;
+}
+footer .container{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 15px;
+}
+
+.footer-box .footer-logo{
+    margin-bottom: 12px;
+}
+.footer-box span{
+    display: block;
+    margin-bottom: 12px;
+}
+.footer-box p{
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-box .email{
+display: flex;
+align-items: center;
+gap: 5px;
+background-color: transparent;
+border: 2px solid white;
+padding: 5px;
+}
+.footer-box .email input{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.footer-ul{
+    line-height: 37px;
+}
+
+.qr{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+}

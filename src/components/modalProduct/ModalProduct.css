@@ -1,0 +1,243 @@
+/* 
+Modal */
+
+
+
+/* Modal oynasi uchun stil */
+.Modal {
+    /* display: none; */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.03);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999999999999999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .Modal.active {
+      opacity: 1;
+      visibility: visible;
+      background-color: rgba(0, 0, 0, 0.5); 
+    }
+    
+    .modalClose{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      background-color: white;
+      color: var(--red);
+      height: 30px;
+      width: 30px;
+      font-size: 25px;
+      border: 2px solid red;
+      border-radius: 50%;
+      display: flex;
+      align-items: center
+      ;
+      justify-content: center;
+    
+    }
+    
+    .modalClose:hover{
+      background-color: var(--red);
+      color: white
+      ;
+    }
+    
+    .modalCard {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      gap: 40px;
+    
+      transform: translateY(50px) scale(0.95);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition-delay: 0.1s;
+    }
+    
+    .Modal.active .modalCard {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    
+    
+    
+    .modalImage {
+      /* flex: 1; */
+      position: relative;
+      /* background-color: #000000; */
+    width: 50%;  
+    }
+    
+    .modalImage img {
+      width: 300px ;
+      height: 300px;
+      /* border-radius: 8px; */
+
+      object-fit: contain;
+    }
+    
+    .modalImage button {
+    transform: translateY(100px) translateX(20px);
+    
+      background-color:white;
+      color: black;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid var(--red);
+      transition: var(--transition);
+    }
+    
+    .modalImage button:hover{
+      background-color: var(--red);
+      color: white;
+    }
+    
+    .modalTitle {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .modalTitle h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .modalTitle h3 {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    
+
+
+
+     .colors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+
+    .colors span.activColor {
+      border: 3px solid red; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+      transform: scale(1.1); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    }
+    
+
+    .colors span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%; 
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    
+   
+    .colors span:hover {
+      transform: scale(1.2); 
+    }
+
+
+
+
+
+
+
+
+
+
+.sizes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+
+.sizes span {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+
+.sizes span.activSize {
+  background-color: var(--red);
+  color: white; 
+  border: 1px solid var(--red); 
+
+}
+
+
+.sizes span:hover {
+  background-color: #ff0606fe;
+}
+    
+    .count {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .count button {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ddd;
+      background-color: white;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .count span {
+      min-width: 30px;
+      text-align: center;
+    }
+    
+    .modalTitle > button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    
+    .modalTitle > button:hover {
+      background-color: #45a049;
+    }
+    
+    .modalTitle h3 span {
+      color: #e53935;
+      font-weight: bold;
+    }
+    
+    .modalTitle h3 del {
+      color: #757575;
+      margin-left: 10px;
+    } 
+    
+    
+    
+    
+    

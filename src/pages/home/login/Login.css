@@ -1,0 +1,143 @@
+.Login .container{
+    padding: 50px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.login p{
+    padding: 15px 0;
+}
+.login input{
+    width: 100%;
+    border: none;
+    padding: 5px 0;
+    margin: 10px 0;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.163);
+    outline: none;
+}
+
+
+.login.Isempty input{
+    border-bottom-color:red ;
+}
+
+.btn_login{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 0;
+}
+
+.btn_login span{
+    font-size: 14px;
+}
+
+.btn_login span:hover{
+   color: var(--red);
+}
+
+
+.btn_login button{
+    padding: 6px 25px ;
+    background-color: transparent;
+    border: none;
+    background-color: #DB4444;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ .Login form{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+
+
+
+
+
+
+.loginBtn {
+    background-color: var(--red);
+    color: white;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; 
+}
+
+.loginBtn.loading {
+    pointer-events: none; 
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loginBtn .spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    display: none; 
+}
+
+.loginBtn.loading .spinner {
+    display: block; 
+}
+
+.loginBtn.loading span {
+    display: none; 
+}
+
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+.loginBtn:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.loginBtn:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+}
+.loginBtn:active{
+    background-color: rgb(148, 23, 23);
+}
+
+
+
+.login_password{
+    position: relative;
+}
+
+.eye_div{
+    position: absolute;
+    right: 0;
+    top: 16px;
+    color: rgba(0, 0, 0, 0.604);    
+    cursor: pointer;
+}
