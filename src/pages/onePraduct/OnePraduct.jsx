@@ -116,7 +116,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
       <div className="onePraduct">
         <div className="container">
           <div className="onerPraduct_text">
-            <span>Account</span>
+            <span>Hisob</span>
             <p></p>
             <span>Gaming</span>
             <p></p>
@@ -154,8 +154,8 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
                   <FaStar className="stars01" />
                   <FaStar className="stars01" />
                 </div>
-                <span>(150 Reviews)</span>
-                <p>In Stock</p>
+                <span>(150 ta sharh)</span>
+                <p>Mavjud</p>
               </div>
               {oneProduct?.price != oneProduct?.discount_price ? (
                 <>
@@ -171,7 +171,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
               <p className="oneText">{oneProduct?.description}</p>
               <p className="border_B"></p>
               <div className="one_colors">
-                <h3>Colours:</h3>
+                <h3>Ranglar:</h3>
                 {oneProduct?.properties?.color?.map((item, index) => {
                   return (
                     <p
@@ -187,7 +187,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
                 })}
               </div>
               <div className="oneSize">
-                <h3>Size:</h3>
+                <h3>O'lcham:</h3>
                 {oneProduct?.properties?.size?.map((item, index) => {
                   return (
                     <span
@@ -214,7 +214,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
                     addToCart();
                   }}
                 >
-                  Buy Now
+                  Xarid qilish
                 </button>
                 <div className="one_heart">
                   <FaRegHeart className="one_hear01" />
@@ -224,8 +224,8 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
                 <div className="one_cart01">
                   <TbTruckDelivery className="delivery" />
                   <div>
-                    <h4>Free Delivery</h4>
-                    <p>Enter your postal code for Delivery Availability</p>
+                    <h4>Bepul yetkazib berish</h4>
+                    <p>Yetkazib berish uchun pochta kodini kiriting</p>
                   </div>
                 </div>
                 <hr />
@@ -233,8 +233,8 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
                 <div className="one_cart01">
                   <BsArrowRepeat className="delivery" />
                   <div>
-                    <h4>Return Delivery</h4>
-                    <p>Free 30 Days Delivery Returns. Details</p>
+                    <h4>Qaytarish</h4>
+                    <p>30 kun ichida bepul qaytarish. Batafsil</p>
                   </div>
                 </div>
               </div>
@@ -244,7 +244,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk }) {
           <div className="one_block01">
             <div className="oneBox">
               <p></p>
-              <h2>Related Item</h2>
+              <h2>O'xshash mahsulotlar</h2>
             </div>
             <div className="prodactCards">
               <Swiper

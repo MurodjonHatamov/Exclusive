@@ -1,36 +1,34 @@
 import React, { useState } from 'react'
 import "./Wishlist.css"
-import { MdOutlineRemoveRedEye } from 'react-icons/md';
-import { FaHeart, FaRegHeart, FaStar } from 'react-icons/fa';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import ProdactCard from '../../components/prodactCard/ProdactCard';
+import ButtonOne from '../../components/Buttons/ButtonOne';
 function Wishlist({wishlistData,setModalActiv,  wishlistDataFunk,      getData}) {
 const [likes,setLikes]=useState(true)
 
-
-
-
-
-
   return (
-    <div className='container wishlist'>
-<div className="wishlist-cards">
-{
-  wishlistData && wishlistData.length > 0 ? (
-    wishlistData.map((item, index) => (
-      <ProdactCard       getData={getData}   wishlistDataFunk={wishlistDataFunk} likes={likes} setModalActiv={setModalActiv} key={index} item={item} />
-    ))
-  ) : (
-    <div className="loader-wishlist">
-      <img src="/imgs/wishlist.png" alt="wishlist" />
-      <h3>Sevimli mahsulotlar yo'q</h3>
-      <p>Mahsulotdagi <FaHeart className='FaHeart'/> belgisi bilan qo'shing️</p>
-    </div>
-  )
-}
-
+    <div className="wishlist">
+      <div className="container">
+   
+        
+        <div className="wishlist-cards">
+          {wishlistData && wishlistData.length > 0 ? (
+            wishlistData.map((item, index) => (
+              <ProdactCard getData={getData} wishlistDataFunk={wishlistDataFunk} likes={likes} setModalActiv={setModalActiv} key={index} item={item} />
+            ))
+          ) : (
+            <div className="loader-wishlist">
+              <img src="/imgs/wishlist.png" alt="wishlist" />
+              <h3>Sevimli mahsulotlar yo'q</h3>
+              <p>Mahsulotdagi <FaHeart className='FaHeart'/> belgisi bilan qo'shing</p>
+<br />
+              <Link to="/" > <ButtonOne  className="wishlist-empty-btn" title={"Do'konga o'tish"}  disableElevation variant={"contained"}/></Link>
+              
+            </div>
+          )}
         </div>
-
+      </div>
     </div>
   )
 }

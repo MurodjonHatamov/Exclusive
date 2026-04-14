@@ -11,12 +11,12 @@ function About() {
     <div className='about'>
 <section className="about_hero">
     <div className="container">
-    <p>Home / <span>About</span></p>
+    <p>Bosh sahifa / <span>Haqida</span></p>
 <div className="aboutTeg-cards">
 <div className="aboutTeg-card_title">
-    <h1>Our Story</h1>
-    <p>Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region. <br /> <br />
-    Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.
+    <h1>Bizning tarix</h1>
+    <p>2015-yil ishga tushirilgan Exclusive Janubiy Osiyoning eng yaxxi online shopping platformasi hisoblanadi. Bangladeshda faol ishtirok etadi. Turli xil marketing, ma'lumot va xizmatlar yordamida Exclusive 10,500 ta sotuvchi va 300 ta brendga ega va 3 milliondan ortiq mijozlarga xizmat ko'rsatadi. <br /> <br />
+    Exclusiveda 1 milliondan ortiq mahsulotlar mavjud va tez o'sib bormoqda. Exclusive turli xil kategoriyalarda keng assortiment taklif etadi.
     </p>
 </div>
 
@@ -35,7 +35,7 @@ function About() {
 <AiOutlineShop className='aboutCardResult_icon'/>
 </div>
 <span>10.5k </span>
-<p>Sallers active our site</p>
+<p>Sotuvchilar</p>
 </div>
 <div className="aboutCardResult">
 <div className="aboutCardResult_imgCard">
@@ -43,7 +43,7 @@ function About() {
 <LuCircleDollarSign className='aboutCardResult_icon'/>
 </div>
 <span>33k</span>
-<p>Mopnthly Produduct Sale</p>
+<p>Oylik savdo</p>
 </div>
 <div className="aboutCardResult">
 <div className="aboutCardResult_imgCard">
@@ -51,7 +51,7 @@ function About() {
 <VscGift  className='aboutCardResult_icon'/>
 </div>
 <span>45.5k</span>
-<p>Customer active in our site</p>
+<p>Faol mijozlar</p>
 </div>
 <div className="aboutCardResult">
 <div className="aboutCardResult_imgCard">
@@ -59,7 +59,7 @@ function About() {
 <TbMoneybag className='aboutCardResult_icon'/>
 </div>
 <span>25k</span>
-<p>Anual gross sale in our site</p>
+<p>Yillik savdo</p>
 </div>
     </div>
 </div>
@@ -73,7 +73,7 @@ function About() {
     <img src="/imgs/aboutSec2_img1.png" alt="" />
 </div>
 <h2>Tom Cruise</h2>
-<p>Founder & Chairman</p>
+<p>Asoschi va Rais</p>
 <ul className="aboutLink">
 <li><a href="#"><TbBrandTwitter/></a></li>
 <li><a href="#"><FaInstagram/></a></li>
@@ -85,7 +85,7 @@ function About() {
     <img src="/imgs/aboutSec2_img2.png" alt="" />
 </div>
 <h2>Emma Watson</h2>
-<p>Managing Director</p>
+<p>Boshqaruvchi</p>
 <ul className="aboutLink">
 <li><a href="#"><TbBrandTwitter/></a></li>
 <li><a href="#"><FaInstagram/></a></li>
@@ -97,7 +97,7 @@ function About() {
     <img src="/imgs/aboutSec2_img3.png" alt="" />
 </div>
 <h2>Will Smith</h2>
-<p>Product Designer</p>
+<p>Mahsulot Dizayneri</p>
 <ul className="aboutLink">
 <li><a href="#"><TbBrandTwitter/></a></li>
 <li><a href="#"><FaInstagram/></a></li>
@@ -113,18 +113,18 @@ function About() {
 
 <div className="box7">
   <img src="/imgs/section7_svg.svg" alt="" />
-  <h3>FREE AND FAST DELIVERY</h3>
-  <p>Free delivery for all orders over $140</p>
+  <h3>TEZKOR YETKAZIB BERISH</h3>
+  <p>140$ dan yuqori buyurtmalar bepul yetkaziladi</p>
 </div>
 <div className="box7">
   <img src="/imgs/section7_svg1.svg" alt="" />
-  <h3>24/7 CUSTOMER SERVICE</h3>
-  <p>Friendly 24/7 customer support</p>
+  <h3>24/7 QO'LLAB QUVVATLASH</h3>
+  <p>Doimiy va do'stona qo'llab quvvatlash</p>
 </div>
 <div className="box7">
   <img src="/imgs/section7_svg2.svg" alt="" />
-  <h3>MONEY BACK GUARANTEE</h3>
-  <p>We reurn money within 30 days</p>
+  <h3>PULNI QAYTARISH KAFOLATI</h3>
+  <p>30 kun ichida pulni qaytarish</p>
 </div>
 
           </div>

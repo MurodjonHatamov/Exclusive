@@ -10,19 +10,19 @@ function Contact() {
         <div className="kontakt-section">
           <div className="section-header">
             <FaPhone className="section-icon" />
-            <h2>Call To Us</h2>
+            <h2>Bizga qo'ng'iroq qiling</h2>
           </div>
-          <p>We are available 24/7, 7 days a week.</p>
-          <p className="kontakt-info">Phone: +880181112222</p>
+          <p>Biz 24/7, 7 kun davomida mavjudmiz.</p>
+          <p className="kontakt-info">Telefon: +880181112222</p>
           <div className="divider"></div>
         </div>
 
         <div className="kontakt-section">
           <div className="section-header">
             <FaEnvelope className="section-icon" />
-            <h2>Write To Us</h2>
+            <h2>Yozing</h2>
           </div>
-          <p>Fill out our form and we will contact you within 24 hours.</p>
+          <p>Formani to'ldiring va 24 soat ichida siz bilan bog'lanamiz.</p>
           <p className="kontakt-info">Email: customer@exclusive.com</p>
           <p className="kontakt-info">Email: support@exclusive.com</p>
         </div>
@@ -32,29 +32,28 @@ function Contact() {
         <div className="form-row">
           <div className="form-group">
            
-            <input placeholder='Your Name *' type="text" id="name" required />
+            <input placeholder='Ismingiz *' type="text" id="name" required />
           </div>
           <div className="form-group">
             
-            <input placeholder='Your Email *' type="email" id="email" required />
+            <input placeholder='Emailingiz *' type="email" id="email" required />
           </div>
           <div className="form-group">
           
-            <input placeholder='Your Phone *' type="tel" id="phone" required />
+            <input placeholder='Telefoningiz *' type="tel" id="phone" required />
           </div>
         </div>
 
         <div className="form-group">
          
-          <textarea placeholder='Your Message' id="message" rows="5"></textarea>
+          <textarea placeholder='Xabar' id="message" rows="5"></textarea>
         </div>
 
         <button type="submit" className="submit-btn">
-          <FaPaperPlane className="submit-icon" /> Send Message
+          <FaPaperPlane className="submit-icon" /> Xabar yuborish
         </button>
       </form>
     </div>
-
 
 
 

@@ -75,48 +75,48 @@ fetch("https://ecommercev01.pythonanywhere.com/user/update-profile/", requestOpt
   }, []);
 
   return (
-    <div className="profile">
+<div className="profile">
       <div className="container">
         <div className="breadcrumb">
-          <span>Home</span> / <span className="current">My Account</span>
+          <span>Bosh sahifa</span> / <span className="current">Mening hisobim</span>
         </div>
 
         <div className="welcome-text">
-          Welcome! <span className="highlight">{ first_name +" "+ last_name}</span>
+          Xush kelibsiz! <span className="highlight">{ first_name +" "+ last_name}</span>
         </div>
 
         <div className="profile-container">
           <div className="sidebar">
-            <h4>Manage My Account</h4>
+            <h4>Hisobimni boshqarish</h4>
             <ul>
-              <li className="active">My Profile</li>
-              <li>Address Book</li>
-              <li>My Payment Options</li>
+              <li className="active">Mening profilim</li>
+              <li>Manzillar</li>
+              <li>To'lov usullarim</li>
             </ul>
 
-            <h4>My Orders</h4>
+            <h4>Buyurtmalarim</h4>
             <ul>
-              <li>My Returns</li>
-              <li>My Cancellations</li>
+              <li>Qaytarishlarim</li>
+              <li>Bekor qilishlarim</li>
             </ul>
 
-            <h4>My Wishlist</h4>
+            <h4>Sevimlilar ro'yxati</h4>
           </div>
 
           <div className="profile-form">
-            <h3>Edit Your Profile</h3>
+            <h3>Profilni tahrirlash</h3>
             <div className="form-grid">
               <div className="form-group">
-                <label>First Name</label>
+                <label>Ism</label>
                 <input onInput={(e)=>{
                   setFirst_name(e.target.value)
-                }} value={first_name} type="text" placeholder="Md" />
+                }} value={first_name} type="text" placeholder="Ism" />
               </div>
               <div className="form-group">
-                <label>Last Name</label>
+                <label>Familiya</label>
                 <input onInput={(e)=>{
                   setLast_name(e.target.value)
-                }}  value={last_name} type="text" placeholder="Rimel" />
+                }}  value={last_name} type="text" placeholder="Familiya" />
               </div>
               <div className="form-group">
                 <label>Email</label>
@@ -126,39 +126,39 @@ fetch("https://ecommercev01.pythonanywhere.com/user/update-profile/", requestOpt
                 }} 
                   value={email_or_phone}
                   type="email"
-                  placeholder="rimel111@gmail.com"
+                  placeholder="email@example.com"
                 />
               </div>
               <div className="form-group">
-                <label>Address</label>
+                <label>Manzil</label>
                 <input onInput={(e)=>{
                   setAddress(e.target.value)
-                }}  value={address} type="text" placeholder="Kingston, 5236, United State" />
+                }}  value={address} type="text" placeholder="Manzil" />
               </div>
               <div className="form-group">
-                <label>Phone number</label>
+                <label>Telefon raqam</label>
                 <input onInput={(e)=>{
                   setPhone(e.target.value)
                 }}   type="text" placeholder="+998...." />
               </div>
             </div>
 
-            <h4>Password Changes</h4>
-     
+            <h4>Parolni o'zgartirish</h4>
+      
             <div className="form-group">
               <input onInput={(e)=>{
                   setPassword(e.target.value)
-                }}  placeholder="New Password" type="password" />
+                }}  placeholder="Yangi parol" type="password" />
             </div>
             <div className="form-group">
-              <input placeholder="Confirm New Password" type="password" />
+              <input placeholder="Yangi parolni tasdiqlash" type="password" />
             </div>
 
             <div className="form-actions">
-              <button className="cancel-btn">Cancel</button>
+              <button className="cancel-btn">Bekor qilish</button>
               <button onClick={()=>{
                 EditProfile()
-              }} className="save-btn">Save Changes</button>
+              }} className="save-btn">Saqlash</button>
             </div>
           </div>
         </div>

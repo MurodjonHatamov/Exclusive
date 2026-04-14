@@ -63,9 +63,9 @@ function SignUp() {
     <div className="SignUp">
       <div className="container">
         <img src="/imgs/signUpImg.png" alt="" />
-        <div className="addAcaunt-card">
-          <h1>Create an account</h1>
-          <p>Enter your details below</p>
+<div className="addAcaunt-card">
+          <h1>Hisob yaratish</h1>
+          <p>Ma'lumotlaringizni kiriting</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -79,7 +79,7 @@ function SignUp() {
               onChange={(e) => {
                 setUserName(e.target.value);
               }}
-              placeholder="Name"
+              placeholder="Ism"
               type="name"
               required
             />
@@ -88,7 +88,7 @@ function SignUp() {
               onChange={(e) => {
                 setUserEmail(e.target.value);
               }}
-              placeholder="Email or Phone Number"
+              placeholder="Email yoki telefon raqam"
               type="email"
               required
             />
@@ -97,7 +97,7 @@ function SignUp() {
               onChange={(e) => {
                 setUserPassword(e.target.value);
               }}
-              placeholder="Password"
+              placeholder="Parol"
               type="password"
               required
             />
@@ -109,22 +109,22 @@ function SignUp() {
               addAccount();
               handleClick()
             
-          
+            
             }
             }
             
             disabled={isLoading}
         >
-            <span>Create Account</span>
+            <span>Hisob yaratish</span>
             <div className="spinner"></div>
         </button>
             <button className="googleAccaunt">
-              <FcGoogle className="FcGoogle" /> Sign up with Google
+              <FcGoogle className="FcGoogle" /> Google orqali kirish
             </button>
             <p>
-              Already have account?{" "}
+              Hisobingiz bormi?{" "}
               <Link to={"/login"}>
-                <span className="clickLogin">Log in</span>
+                <span className="clickLogin">Kirish</span>
               </Link>
             </p>
           </form>

@@ -60,8 +60,8 @@ function Login({ getUser }) {
         <img src="/imgs/signUpImg.png" alt="" />
 
         <div className={Isempty ? "login Isempty" : "login"}>
-          <h1>Log in to Exclusive</h1>
-          <p>Enter your details below</p>
+          <h1>Exclusive ga kirish</h1>
+          <p>Ma'lumotlaringizni kiriting</p>
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -75,7 +75,7 @@ function Login({ getUser }) {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              placeholder="Email or Phone Number"
+              placeholder="Email yoki telefon raqam"
               type="text"
               required
             />
@@ -86,7 +86,7 @@ function Login({ getUser }) {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                placeholder="Password"
+                placeholder="Parol"
                 type={eyeActiv ? "text" : "password"}
                 required
               />
@@ -110,12 +110,12 @@ function Login({ getUser }) {
                 }}
                 disabled={isLoading}
               >
-                <span>Log In</span>
+                <span>Kirish</span>
                 <div className="spinner"></div>
               </button>{" "}
               <Link to={"/signUp"}>
                 {" "}
-                <span>Forget Password?</span>
+                <span>Parolni unutdingizmi?</span>
               </Link>
             </div>
           </form>

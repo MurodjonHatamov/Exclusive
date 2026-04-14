@@ -7,7 +7,7 @@ function SearchProduct({   data,searchData}) {
   return (
     <div className='SearchProduct'>
         <div className="container">
-            <h2>Search</h2>
+            <h2>Qidiruv</h2>
         <div className="prodactCards">
             {
                 data?.map((item,index)=>{

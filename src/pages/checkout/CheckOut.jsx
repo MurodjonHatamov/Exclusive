@@ -7,16 +7,16 @@ function CheckOut() {
 
 <div className="container">
 <div className="breadcrumb">
-        <span>Account</span> / <span>My Account</span> / <span>Product</span> / 
-        <span>View Cart</span> / <span className="active">CheckOut</span>
+        <span>Hisob</span> / <span>Mening hisobim</span> / <span>Mahsulot</span> / 
+        <span>Savat</span> / <span className="active">To'lov</span>
       </div>
 
-      <h1 className="page-title">Billing Details</h1>
+      <h1 className="page-title">To'lov ma'lumotlari</h1>
 <form action="">
     <div className="form-columns">
         <div className="form-column">
             <div className="form-group">
-            <label className="required">First Name</label>
+            <label className="required">Ism</label>
               <input
                 type="text"
                 name="firstName"
@@ -24,7 +24,7 @@ function CheckOut() {
               />
             </div>
             <div className="form-group">
-            <label className="required">Company Name</label>
+            <label className="required">Kompaniya nomi</label>
               <input
                 type="text"
                 name="firstName"
@@ -32,7 +32,7 @@ function CheckOut() {
               />
             </div>
             <div className="form-group">
-            <label className="required">Street Address*</label>
+            <label className="required">Manzil*</label>
               <input
                 type="text"
                 name="firstName"
@@ -40,7 +40,7 @@ function CheckOut() {
               />
             </div>
             <div className="form-group">
-            <label className="required">Apartment, floor, etc. (optional)</label>
+            <label className="required">Apartman, qavat va h.k. (ixtiyoriy)</label>
               <input
                 type="text"
                 name="firstName"
@@ -48,7 +48,7 @@ function CheckOut() {
               />
             </div>
             <div className="form-group">
-            <label className="required">Town/City*</label>
+            <label className="required">Shahar/Tuman*</label>
               <input
                 type="text"
                 name="firstName"
@@ -56,7 +56,7 @@ function CheckOut() {
               />
             </div>
             <div className="form-group">
-            <label className="required">Phone Number*</label>
+            <label className="required">Telefon raqam*</label>
               <input
                 type="text"
                 name="firstName"
@@ -65,7 +65,7 @@ function CheckOut() {
             </div>
             
             <div className="form-group">
-            <label className="required">Email Address*</label>
+            <label className="required">Email manzil*</label>
               <input
                 type="text"
                 name="firstName"
@@ -77,7 +77,7 @@ function CheckOut() {
                 type="checkbox"
                 required
               />
-              <label className="required">Save this information for faster check-out next time</label>
+              <label className="required">Bu ma'lumotni keyingi xarid uchun saqlash</label>
             </div>
         </div>
         <div className="form-column">
@@ -103,15 +103,15 @@ function CheckOut() {
 
           <div className="order-totals">
             <div className="total-row">
-              <span>Subtotal:</span>
+              <span>Jami:</span>
               <span>$1750</span>
             </div>
             <div className="total-row">
-              <span>Shipping:</span>
-              <span>Free</span>
+              <span>Yetkazib berish:</span>
+              <span>Bepul</span>
             </div>
             <div className="total-row grand-total">
-              <span>Total:</span>
+              <span>Umumiy:</span>
               <span>$1750</span>
             </div>
           </div></div>

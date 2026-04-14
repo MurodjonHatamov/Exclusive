@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./CartPage.css";
 import { Link } from "react-router-dom";
+import { RiDeleteBinLine } from "react-icons/ri";
+
+import IconButtonLoading from "../../components/iconButton/IconButtonLoading";
+import ButtonOne from "../../components/Buttons/ButtonOne";
 
 function CartPage({setCartCount}) {
   const [data, setData] = useState(null);
@@ -53,96 +57,103 @@ useEffect(() => {
 
 
   return (
-    <>
+    <div className="cart-page">
       <div className="container">
-        <div className="cart-page">
-          <nav className="breadcrumb">
-            Home / <span className="breadcrumb-current">Cart</span>
-          </nav>
+        <nav className="breadcrumb">
+          Bosh sahifa / <span className="breadcrumb-current">Savat</span>
+        </nav>
 
-          <div className="cart-table-wrapper">
-            <table className="cart-table">
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data?.cart_items?.map((item) => (
-                  <tr key={item.id}>
-                    <td className="product-cell">
-                      <div onClick={()=>{
-                        deleteCart(item.id)
-                      }} className="delete">
-                        <span>x</span>
-                      </div>
-                      <img
-                        src={`https://ecommercev01.pythonanywhere.com/${item.pictures[0]?.file}`}
-                        alt={item.title}
-                        className="product-img"
-                      />
-                      {item.title}
-                    </td>
-                    <td>{item.price}</td>
-                    <td>
-                      <input
-                        type="number"
-                        className="quantity-input"
-                        min="1"
-                        max="99"
-                        value={item.quantity}
-                       readOnly
-                      />
-                    </td>
-                    <td>{item.subtotal}</td>
+        {data?.cart_items && data.cart_items.length > 0 ? (
+          <>
+            <div className="cart-table-wrapper">
+              <table className="cart-table">
+                <thead>
+                  <tr>
+                    <th>Mahsulot</th>
+                    <th>Narx</th>
+                    <th>Miqdor</th>
+                    <th>Jami</th>
+                    <th>O'chirish</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="shop-buttons">
-            <button className="outline-btn">Return To Shop</button>
-            <button className="outline-btn">Update Cart</button>
-          </div>
-
-          <div className="cart-bottom">
-            <div className="cart-actions">
-              <div className="coupon-form">
-                <input
-                  type="text"
-                  placeholder="Coupon Code"
-                  className="coupon-input"
-                />
-                <button className="apply-btn">Apply Coupon</button>
-              </div>
+                </thead>
+                <tbody>
+                  {data?.cart_items?.map((item) => (
+                    <tr key={item.id}>
+                      <td className="product-cell">
+                        <img
+                          src={`https://ecommercev01.pythonanywhere.com/${item.pictures[0]?.file}`}
+                          alt={item.title}
+                          className="product-img"
+                        />
+                        <span className="product-title">{item.title.length > 30 ? item.title.substring(0, 30) + '...' : item.title}</span>
+                      </td>
+                      <td className="price-cell">{item.price} so'm</td>
+                      <td>
+                        <input
+                          type="number"
+                          className="quantity-input"
+                          min="1"
+                          max="99"
+                          value={item.quantity}
+                          readOnly
+                        />
+                      </td>
+                      <td className="subtotal-cell">{item.subtotal} so'm</td>
+                      <td className="delete-cell">
+                        <IconButtonLoading
+                          icon={<RiDeleteBinLine />} 
+                          onClick={() => deleteCart(item.id)}
+                        />                  
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="cart-summary">
-              <h2>Cart Total</h2>
-              <div className="summary-line">
-                <span>Subtotal:</span>
-                <span>{data?.total_price}</span>
+            <div className="cart-bottom">
+              <div className="cart-actions">
+                <div className="coupon-form">
+                  <input
+                    type="text"
+                    placeholder="Kupon kodi"
+                    className="coupon-input"
+                  />
+                  <button className="red-btn">Kupon qo'llash</button>
+                </div>
               </div>
-              <div className="summary-line">
-                <span>Shipping:</span>
-                <span>Free</span>
+
+              <div className="cart-summary">
+                <h2>Savat jami</h2>
+                <div className="summary-line">
+                  <span>Jami:</span>
+                  <span>{data?.total_price} so'm</span>
+                </div>
+                <div className="summary-line">
+                  <span>Yetkazib berish:</span>
+                  <span>Bepul</span>
+                </div>
+                <div className="summary-total">
+                  <span>Umumiy:</span>
+                  <span>{data?.total_price} so'm</span>
+                </div>
+                <Link to={"/checkout"}>
+                  <button className="red-btn checkout-btn">To'lovga o'tish</button>
+                </Link>
               </div>
-              <div className="summary-total">
-                <span>Total:</span>
-                <span>{data?.total_price}</span>
-              </div>
-              <Link to={"/checkout"}>
-                <button className="checkout-btn">Proceed to checkout</button>
-              </Link>
             </div>
+          </>
+        ) : (
+          <div className="cart-empty">
+            <h2>Savat bo'sh</h2>
+            <p>Siz hali hech qanday mahsulot qo'shmadingiz</p>
+            <Link to="/" >
+            <ButtonOne title={"Do'konga o'tish"} />
+            </Link>
           </div>
-        </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
