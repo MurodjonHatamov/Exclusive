@@ -52,3 +52,7 @@ button {
 .swiper-button-prev::after {
   font-size: 16px !important;
 }
+
+.app-content {
+  padding-top: 60px;
+}

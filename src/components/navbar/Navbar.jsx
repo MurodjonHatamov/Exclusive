@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import IconButtonWithBadge from "../iconButtonWithBadge/IconButtonWithBadge";
 import AcauntMenu from "../acauntMenu/AcauntMenu";
-function Navbar({ user, getUser, cartCount, wishlistData, dataCategory,setSearchData }) {
+function Navbar({ user, getUser, cartCount, wishlistData, dataCategory,setSearchData ,cartData}) {
   const [cartLength, setCartLength] = useState(0);
 
 
@@ -28,7 +28,7 @@ const links = [
 
 
   return (
-    <nav>
+    <nav className="navbar-fixed">
       
       <div className="nav2">
         <div className="container">

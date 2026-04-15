@@ -19,7 +19,7 @@ import CardCategory from "../../components/cardCategory/CardCategory";
 import ButtonOne from "../../components/Buttons/ButtonOne";
 import Section4 from "../../components/homeSections/section4/Section4";
 
-  function Home({ data ,setModalActiv,dataCategory, getData,wishlistDataFunk}) {
+  function Home({ data ,setModalActiv,dataCategory, getData,wishlistDataFunk,}) {
 
 const [view,setview]=useState(true)
     
@@ -89,8 +89,8 @@ dataCategory ? (   dataCategory?.map((item, index) => (
 </Link>
    ))): (  <div className="BoxUndefined">
     {
-      [1,1,1,1,1,1].map((item)=>{
-    return     <div style={{
+      [1,1,1,1,1,1].map((item,i)=>{
+    return     <div key={i}  style={{
       width: '200px',
       height: '30px',
       

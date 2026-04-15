@@ -4,15 +4,18 @@ import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
-function ProdactCard({ item, setModalActiv,getData ,wishlistDataFunk,likes}) {
+function ProdactCard({ item, setModalActiv,getData ,wishlistDataFunk }) {
   const [discount, setDiscount] = useState(false);
   const [price, setPrice] = useState(null);
   const [disPrice, setDisPrice] = useState(null);
+  const [isLiked, setIsLiked] = useState(item?.is_liked);
   const navigate=useNavigate()
 
 
   // card malumotlari
   const getInfo = (id) => {
+    setModalActiv({ loading: true });
+
     const requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -24,10 +27,12 @@ function ProdactCard({ item, setModalActiv,getData ,wishlistDataFunk,likes}) {
     )
       .then((response) => response.json())
       .then((result) => {
-        
         setModalActiv(result);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setModalActiv(null);
+      });
   };
 
 
@@ -66,10 +71,9 @@ const requestOptions = {
 fetch(`https://ecommercev01.pythonanywhere.com/action/add-to-wishlist/?product_id=${id}`, requestOptions)
   .then((response) => response.text())
   .then((result) => {
+    setIsLiked(true);
     getData()
-
     wishlistDataFunk()
-    
   })
   .catch((error) => console.error(error));
   }
@@ -92,17 +96,13 @@ const deletLike=(id)=>{
     redirect: "follow"
   };
   
-  fetch(`https://ecommercev01.pythonanywhere.com/action/remove-from-wishlist/?product_id=${id}`, requestOptions)
+fetch(`https://ecommercev01.pythonanywhere.com/action/remove-from-wishlist/?product_id=${id}`, requestOptions)
     .then((response) => response.text())
-    .then((result) => 
-    {
-  
+    .then((result) => {
+      setIsLiked(false);
       wishlistDataFunk()
-    getData()
-
-      
-    }
-  )
+      getData()
+    })
     .catch((error) => console.error(error));
 }
 
@@ -122,10 +122,11 @@ const handleUnlikeClick = (e) => {
 
   useEffect(() => {
     priceFun(item);
+    setIsLiked(item?.is_liked);
     if (item?.discount_percent == null) {
       setDiscount(true);
     }
-  }, []);
+  }, [item]);
 
 
 
@@ -172,30 +173,15 @@ const handleUnlikeClick = (e) => {
             </div>
 
             <div className="like-box">
-        {
-          likes ?   <button onClick={handleUnlikeClick}>
-          <FaHeart className="likeHeart" />
-     </button> :
-     <>
-      {item?.is_liked ? (
-  <button onClick={handleUnlikeClick}>
-       <FaHeart className="likeHeart" />
-
-
-
-  </button>
-) : (
-  <button onClick={handleLikeClick}>
-         <FaRegHeart className="likeHeart" />
-  </button>
-)}
-     </>
-        }
-
-
-
-              
-
+              {isLiked ? (
+                <button onClick={handleUnlikeClick}>
+                  <FaHeart className="likeHeart" style={{ color: "#db4444" }} />
+                </button>
+              ) : (
+                <button onClick={handleLikeClick}>
+                  <FaRegHeart className="likeHeart" />
+                </button>
+              )}
               <button>
                 <MdOutlineRemoveRedEye />
               </button>

@@ -12,7 +12,7 @@ import Contact from "./pages/contact/Contact";
 import OnePraduct from "./pages/onePraduct/OnePraduct";
 import CartPage from "./pages/cartPage/CartPage";
 import Categories from "./pages/categories/Categories";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import CheckOut from "./pages/checkout/CheckOut";
 import ModalProduct from "./components/modalProduct/ModalProduct";
 import Wishlist from "./pages/wishlist/Wishlist";
@@ -23,6 +23,7 @@ function App() {
   const [wishlistData, setWishlistData] = useState(null);
   const [data, setData] = useState(null);
   const [user, setUser] = useState(null);
+   const [cartList, setCartList] = useState({ loading: true });
   const [cartCount, setCartCount] = useState(null);
   const [dataCategory, setDataCategory] = useState(null);
 const [searchData,setSearchData]=useState(null)
@@ -103,6 +104,66 @@ const [searchData,setSearchData]=useState(null)
       .catch((error) => console.error(error));
   };
 
+  const cartData = () => {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem("ShopToken")}`);
+    
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("https://ecommercev01.pythonanywhere.com/order/cart-items/", requestOptions)
+      .then((response) => response.json()) 
+      .then((result) => {
+        setCartList(result)
+        setCartCount(result)  
+     
+        
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const addToCart = (productId, quantity, color, size) => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem("ShopToken")}`);
+
+    let bodyData = {
+      product_id: productId,
+      quantity: quantity,
+    };
+
+    if (color || size) {
+      bodyData.properties = {};
+      if (color) bodyData.properties.color = color;
+      if (size) bodyData.properties.size = size;
+    }
+
+    const raw = JSON.stringify(bodyData);
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    fetch("https://ecommercev01.pythonanywhere.com/order/add-to-cart/", requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.properties) {
+          toast.error("Iltimos, rang va o'lchamni tanlang");
+        } else {
+          toast.success("Mahsulot savatga qo'shildi");
+          cartData();
+        }
+      })
+      .catch((error) => console.error(error));
+  };
+
+
   // DataCategory
   const getCategory = () => {
     const requestOptions = {
@@ -126,6 +187,7 @@ const [searchData,setSearchData]=useState(null)
     wishlistDataFunk();
     getUser();
     getCategory();
+    cartData()
   }, []);
 
   return (
@@ -141,13 +203,15 @@ const [searchData,setSearchData]=useState(null)
           dataCategory={dataCategory}
           data={data}
           setSearchData={setSearchData}
+          cartData={cartData}
         />
 
-        {modalActiv && (
-          <ModalProduct modalActiv={modalActiv} setModalActiv={setModalActiv} />
-        )}
+     
+          <ModalProduct addToCart={addToCart} cartData={cartData}  modalActiv={modalActiv} setModalActiv={setModalActiv} />
+       
 
-        <Routes>
+        <div className="app-content">
+          <Routes>
           <Route
             path="/searchproduct"
             element={<SearchProduct data={data} searchData={searchData}/>}
@@ -156,6 +220,7 @@ const [searchData,setSearchData]=useState(null)
             path="/"
             element={
               <Home
+              cartData={cartData} 
                 data={data}
                 setModalActiv={setModalActiv}
                 dataCategory={dataCategory}
@@ -186,7 +251,7 @@ const [searchData,setSearchData]=useState(null)
 
           <Route
             path="/cartPage"
-            element={<CartPage setCartCount={setCartCount} />}
+            element={<CartPage cartList={cartList} cartData={cartData} setCartCount={setCartCount} cartCount={cartCount}/>}
           />
           <Route
             path="/categories/:id"
@@ -205,11 +270,13 @@ const [searchData,setSearchData]=useState(null)
                 getData={getData}
                 setModalActiv={setModalActiv}
                 data={data}
+                addToCart={addToCart}
                 wishlistDataFunk={wishlistDataFunk}
               />
             }
           />
         </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
     </>
