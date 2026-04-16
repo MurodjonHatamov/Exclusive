@@ -19,6 +19,7 @@ import Wishlist from "./pages/wishlist/Wishlist";
 import SearchProduct from "./pages/searchProduct/SearchProduct";
 
 function App() {
+  
   const [modalActiv, setModalActiv] = useState(null);
   const [wishlistData, setWishlistData] = useState(null);
   const [data, setData] = useState(null);
@@ -27,6 +28,9 @@ function App() {
   const [cartCount, setCartCount] = useState(null);
   const [dataCategory, setDataCategory] = useState(null);
 const [searchData,setSearchData]=useState(null)
+
+
+     
   // Umumiy malumot
   const getData = () => {
     const myHeaders = new Headers();
@@ -119,7 +123,7 @@ const [searchData,setSearchData]=useState(null)
       .then((result) => {
         setCartList(result)
         setCartCount(result)  
-     
+    
         
       })
       .catch((error) => console.error(error));
@@ -204,6 +208,9 @@ const [searchData,setSearchData]=useState(null)
           data={data}
           setSearchData={setSearchData}
           cartData={cartData}
+        setCartList={setCartList}
+        setWishlistData={setWishlistData}
+        setCartCount={setCartCount}
         />
 
      
@@ -230,10 +237,10 @@ const [searchData,setSearchData]=useState(null)
             }
           />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/login" element={<Login getUser={getUser} />} />
+          <Route path="/login" element={<Login getUser={getUser} wishlistDataFunk={wishlistDataFunk} cartData={cartData} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/checkout" element={<CheckOut cartCount={cartCount} cartData={cartData} cartList={cartList}/>} />
           <Route path="/myAccaunt" element={<MyAcaunt />} />
 
           <Route
@@ -260,6 +267,7 @@ const [searchData,setSearchData]=useState(null)
                 getData={getData}
                 wishlistDataFunk={wishlistDataFunk}
                 setModalActiv={setModalActiv}
+                wishlistData={wishlistData} 
               />
             }
           />

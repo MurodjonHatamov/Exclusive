@@ -29,6 +29,11 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk, addToCart })
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [productId, setProductId] = useState(id);
+  const [reviews, setReviews] = useState([]);
+  const [reviewsLoading, setReviewsLoading] = useState(true);
+  const [reviewText, setReviewText] = useState("");
+  const [reviewStars, setReviewStars] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
   
   
   const plus = () => {
@@ -68,6 +73,70 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk, addToCart })
     addToCart(productId, count, color, size);
   };
 
+  const getReviews = () => {
+
+
+    setReviewsLoading(true);
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+
+    };
+    fetch(
+      `https://ecommercev01.pythonanywhere.com/action/product-reviews/?product_id=${id}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        setReviews(result);
+        console.log(result);
+        
+        setReviewsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setReviewsLoading(false);
+      });
+  };
+
+  const submitReview = () => {
+    if (!localStorage.getItem("ShopToken")) {
+      navigate("/login");
+      return;
+    }
+    if (!reviewStars || !reviewText) {
+      toast.error("Sharh va reyting kiriting!");
+      return;
+    }
+    setSubmitting(true);
+    
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${localStorage.getItem("ShopToken")}`);
+    myHeaders.append("Content-Type", "application/json");
+    
+    fetch("https://ecommercev01.pythonanywhere.com/action/submit-review/", {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify({
+        product: id,
+        stars: reviewStars,
+        comment: reviewText
+      })
+    })
+      .then((response) => response.json())
+      .then(() => {
+        getReviews();
+        setReviewText("");
+        setReviewStars(0);
+        toast.success("Sharh yuborildi!");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Xatolik yuz berdi");
+      })
+      .finally(() => setSubmitting(false));
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -84,6 +153,7 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk, addToCart })
 
   useEffect(() => {
     ProductData();
+    getReviews();
   }, [id]);
   return (
     <>
@@ -150,12 +220,12 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk, addToCart })
                   {oneProduct?.price != oneProduct?.discount_price ? (
                     <>
                       <h3>
-                        <del>{oneProduct?.price}$</del>
+                        <del>{Number(oneProduct?.price).toLocaleString()} so'm</del>
                       </h3>
-                      <h2>{oneProduct?.discount_price}$</h2>
+                      <h2>{Number(oneProduct?.discount_price).toLocaleString()} so'm</h2>
                     </>
                   ) : (
-                    <h3>{oneProduct?.price}$</h3>
+                    <h3>{Number(oneProduct?.price).toLocaleString()} so'm</h3>
                   )}
 
                   <p className="oneText">{oneProduct?.description}</p>
@@ -224,10 +294,66 @@ function OnePraduct({ data, setModalActiv,getData,wishlistDataFunk, addToCart })
                         <p>30 kun ichida bepul qaytarish. Batafsil</p>
                       </div>
                     </div>
-                  </div>
-                </div>
+</div>
+          </div>
+          </div>
+
+<div className="reviews-section">
+            <div className="reviews-header">
+              <h2>Sharhlar</h2>
+              <span>{reviews.length} ta sharh</span>
+            </div>
+
+            <div className="review-form">
+              <h3>Sharh yozish</h3>
+              <div className="star-input">
+                {[1,2,3,4,5].map((star) => (
+                  <FaStar 
+                    key={star}
+                    onClick={() => setReviewStars(star)}
+                    className={star <= reviewStars ? "filled" : ""}
+                  />
+                ))}
               </div>
-            </>
+              <textarea 
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+                placeholder="Sharhingizni yozing..."
+              />
+              <ButtonOne 
+                title={submitting ? "Yuborilmoqda..." : "Yuborish"} 
+                onClick={submitReview}
+                disabled={submitting || !reviewStars || !reviewText}
+              />
+            </div>
+
+            <div className="reviews-list">
+              {reviewsLoading ? (
+                [1,2,3].map((i) => <SkletonComponents key={i} variant="rectangular" width="100%" height="120px" />)
+              ) : (
+                reviews?.map((review, index) => (
+                  <div className="review-card" key={index}>
+                    <div className="review-header">
+                      <div className="user-avatar">
+                        F
+                      </div>
+                      <div className="user-info">
+                        <h4>Foydalanuvchi</h4>
+                        <div className="review-stars">
+                          {[...Array(5)].map((_, i) => (
+                            <FaStar key={i} className={i < (review.stars || 0) ? "filled" : ""} />
+                          ))}
+                        </div>
+                        <span>{review.created_at?.split('T')[0]}</span>
+                      </div>
+                    </div>
+                    <p className="review-text">{review.comment}</p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </>
           )}
 
           <div className="one_block01">

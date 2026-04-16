@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
-function ProdactCard({ item, setModalActiv,getData ,wishlistDataFunk }) {
+function ProdactCard({ item, setModalActiv,getData ,wishlistDataFunk ,likes}) {
   const [discount, setDiscount] = useState(false);
   const [price, setPrice] = useState(null);
   const [disPrice, setDisPrice] = useState(null);
@@ -158,6 +158,8 @@ const handleUnlikeClick = (e) => {
             </p>
             <div className="star">
               <span>
+
+               
                 <FaStar />
                 <FaStar />
                 <FaStar />
@@ -173,7 +175,7 @@ const handleUnlikeClick = (e) => {
             </div>
 
             <div className="like-box">
-              {isLiked ? (
+              {isLiked || likes ? (
                 <button onClick={handleUnlikeClick}>
                   <FaHeart className="likeHeart" style={{ color: "#db4444" }} />
                 </button>

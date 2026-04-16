@@ -2,20 +2,29 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import Button from '@mui/material/Button';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-function Login({ getUser }) {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+import CircularProgress from '@mui/material/CircularProgress';
+
+function Login({ getUser, wishlistDataFunk, cartData }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [Isempty, setIsempty] = useState(false);
-  const [eyeActiv, setEyeActiv] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    setIsLoading(true);
-  };
-
   const getData = () => {
+    if (!email || !password) {
+      toast.error("Iltimos, barcha maydonlarni to'ldiring");
+      return;
+    }
+
+    setIsLoading(true);
+
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -34,24 +43,25 @@ function Login({ getUser }) {
     fetch("https://ecommercev01.pythonanywhere.com/user/token/", requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-        localStorage.setItem("ShopToken", result?.access);
-        setIsLoading(false);
-        getUser();
-        if (password && email) {
-          navigate("/");
+        if (result?.access) {
+          localStorage.setItem("ShopToken", result.access);
+          toast.success("Muvaffaqiyatli kirdingiz!");
+          setTimeout(() => {
+            getUser();
+            wishlistDataFunk();
+            cartData();
+            navigate("/");
+          }, 1000);
         } else {
-          toast.error(result?.email_or_phone[0]);
-          setIsempty(true);
+          toast.error(result?.detail || "Email yoki parol noto'g'ri");
+          setIsLoading(false);
         }
-        setEmail("");
-        setPassword("");
       })
-      .catch((error) => console.error(error));
-  };
-
-  const activGetData = () => {
-    getData();
+      .catch((error) => {
+        console.error(error);
+        toast.error("Xatolik yuz berdi");
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -59,65 +69,85 @@ function Login({ getUser }) {
       <div className="container">
         <img src="/imgs/signUpImg.png" alt="" />
 
-        <div className={Isempty ? "login Isempty" : "login"}>
+        <div className="login">
           <h1>Exclusive ga kirish</h1>
           <p>Ma'lumotlaringizni kiriting</p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              activGetData();
-            }}
-            action=""
-          >
-            <input
-              id="email"
+          
+          <form onSubmit={(e) => { e.preventDefault(); getData(); }}>
+            <TextField
+              fullWidth
+              variant="filled"
+              label="Email yoki telefon raqam"
               value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              placeholder="Email yoki telefon raqam"
-              type="text"
+              onChange={(e) => setEmail(e.target.value)}
               required
+              InputLabelProps={{ shrink: true }}
+              sx={{ 
+                '& .MuiFilledInput-root': { 
+                  borderRadius: '0px',
+                  '&:before': { borderBottom: '2px solid #8a8787' },
+                  '&:hover:before': { borderBottom: '2px solid #000' },
+                  '&:before, &:after': { borderRadius: '0px' }
+                }
+              }}
             />
-            <div className="login_password">
-              <input
-                id="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                placeholder="Parol"
-                type={eyeActiv ? "text" : "password"}
-                required
-              />
-              <div
-                onClick={() => {
-                  setEyeActiv(!eyeActiv);
-                }}
-                className="eye_div"
-              >
-                {eyeActiv ? <FaEyeSlash /> : <FaEye />}
-              </div>
-            </div>
 
-            <div className="btn_login">
-              <button
-                className={`loginBtn ${isLoading ? "loading" : ""}`}
-                onClick={() => {
-                  setIsLoading(true);
-                  handleClick();
-                  activGetData();
-                }}
-                disabled={isLoading}
-              >
-                <span>Kirish</span>
-                <div className="spinner"></div>
-              </button>{" "}
-              <Link to={"/signUp"}>
-                {" "}
-                <span>Parolni unutdingizmi?</span>
-              </Link>
-            </div>
+            <TextField
+              fullWidth
+              variant="filled"
+              label="Parol"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type={showPassword ? 'text' : 'password'}
+              required
+              InputLabelProps={{ shrink: true }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+              sx={{ 
+                '& .MuiFilledInput-root': { 
+                  borderRadius: '0px',
+                  '&:before': { borderBottom: '2px solid #8a8787' },
+                  '&:hover:before': { borderBottom: '2px solid #000' },
+                  '&:before, &:after': { borderRadius: '0px' }
+                }
+              }}
+            />
+
+            <Button 
+              className="loginBtn"
+              variant="contained"
+              fullWidth
+              onClick={getData}
+              disabled={isLoading}
+              sx={{ 
+                height: '50px',
+                fontSize: '16px',
+                textTransform: 'none',
+                backgroundColor: '#DB4444',
+                '&:hover': { backgroundColor: '#c03030' }
+              }}
+            >
+              {isLoading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                "Kirish"
+              )}
+            </Button>
+
+            <Link to="/signUp">
+              <span className="forgot-password">Parolni unutdingizmi?</span>
+            </Link>
           </form>
         </div>
       </div>

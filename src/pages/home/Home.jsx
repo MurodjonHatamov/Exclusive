@@ -15,9 +15,11 @@ import { FaChevronRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { Card } from "@mui/material";
 import CardCategory from "../../components/cardCategory/CardCategory";
+import SkletonComponents from "../../components/skleton/SkletonComponents";
 
 import ButtonOne from "../../components/Buttons/ButtonOne";
 import Section4 from "../../components/homeSections/section4/Section4";
+import CardSkleton from "../../components/skleton/CardSkleton";
 
   function Home({ data ,setModalActiv,dataCategory, getData,wishlistDataFunk,}) {
 
@@ -202,11 +204,11 @@ return <>
                   modules={[Autoplay, Pagination, Navigation]}
                   className="mySwiper"
                 >
-                  {data?.map((item) => (
+                  {data ? data?.map((item) => (
                     <SwiperSlide key={item.id}>
                       <ProdactCard wishlistDataFunk={wishlistDataFunk} getData={getData} item={item} setModalActiv={setModalActiv}/>
                     </SwiperSlide>
-                  ))}
+                  )) : [1,2,3,4].map((i) => <SwiperSlide key={i}><CardSkleton /></SwiperSlide>)}
                 </Swiper>
              
               </div>
@@ -224,11 +226,11 @@ return <>
               <h1>Kategoriyalar bo'yicha</h1>
 
               <div   className="category-boxs">
-              {dataCategory?.map((item, index) => (
+              {dataCategory ? dataCategory?.map((item, index) => (
        <Link key={index} to={`/categories/${item?.id}`}>
          <CardCategory img={item?.image} title={item?.title} />
                 </Link>
-        ))}
+        )) : [1,2,3,4,5,6].map((i) => <SkletonComponents key={i} variant="rectangular" width="180px" height="130px" />)}
                
               </div>
             </div>
@@ -257,11 +259,11 @@ return <>
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
                 >
-                  {data?.map((item) => (
+                  {data ? data?.map((item) => (
                     <SwiperSlide key={item.id}>
                       <ProdactCard wishlistDataFunk={wishlistDataFunk} getData={getData} item={item} setModalActiv={setModalActiv}/>
                     </SwiperSlide>
-                  ))}
+                  )) : [1,2,3,4].map((i) => <SwiperSlide key={i}><CardSkleton /></SwiperSlide>)}
                 </Swiper>
               </div>
             </div>
@@ -281,9 +283,9 @@ return <>
               </span>
               <h1>Mahsulotlarimizni o'rganing</h1>
               <div className="prodactCards1">
-              {data?.slice(0, view ? 8 : data.length).map((item) => (
+              {data ? data?.slice(0, view ? 8 : data.length).map((item) => (
   <ProdactCard wishlistDataFunk={wishlistDataFunk} key={item.id} getData={getData} setModalActiv={setModalActiv} item={item} />
-))}
+)) : [1,2,3,4,5,6,7,8].map((i) => <CardSkleton key={i} />)}
 
               </div>
             

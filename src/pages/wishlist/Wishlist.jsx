@@ -4,8 +4,12 @@ import { FaHeart } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ProdactCard from '../../components/prodactCard/ProdactCard';
 import ButtonOne from '../../components/Buttons/ButtonOne';
+import { useScrollToTop } from '../../hooks/useScrollToTop';
 function Wishlist({wishlistData,setModalActiv,  wishlistDataFunk,      getData}) {
+   useScrollToTop();
 const [likes,setLikes]=useState(true)
+  
+
 
   return (
     <div className="wishlist">

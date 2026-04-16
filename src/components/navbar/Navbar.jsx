@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import IconButtonWithBadge from "../iconButtonWithBadge/IconButtonWithBadge";
 import AcauntMenu from "../acauntMenu/AcauntMenu";
-function Navbar({ user, getUser, cartCount, wishlistData, dataCategory,setSearchData ,cartData}) {
+function Navbar({ user, getUser, cartCount, wishlistData, setSearchData, setCartList, setWishlistData, setCartCount}) {
   const [cartLength, setCartLength] = useState(0);
 
 
@@ -20,10 +20,10 @@ function Navbar({ user, getUser, cartCount, wishlistData, dataCategory,setSearch
 
 
 const links = [
-  { name: "Home", path: "/" },
-  { name: "Contact", path: "/contact" },
-  { name: "About", path: "/about" },
-  { name: "Sign Up", path: "/signUp" },
+  { name: "Bosh sahifa", path: "/" },
+  { name: "Bog'lanish", path: "/contact" },
+  { name: "Biz haqimizda", path: "/about" },
+  { name: "Ro'yxatdan o'tish", path: "/signUp" },
 ]
 
 
@@ -53,7 +53,7 @@ const links = [
               <input onInput={(e)=>{
               //  setSearchData(e.target.value);
                 
-              }} type="text" placeholder="What are you looking for?" />
+              }} type="text" placeholder="Nima qidiryapsiz?" />
               <IoSearch className="IoSearch" />
             </div>
 
@@ -69,7 +69,7 @@ const links = [
 
 
             {user?.id && (
-            <AcauntMenu   getUser={getUser} />  
+            <AcauntMenu getUser={getUser} setCartList={setCartList} setWishlistData={setWishlistData} setCartCount={setCartCount}/>  
             )}
 
 

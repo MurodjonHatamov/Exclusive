@@ -14,7 +14,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { FiUser } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
 
-function AcauntMenu({ userMenuActiv, setUserMenuActiv, getUser }) {
+function AcauntMenu({ userMenuActiv, setUserMenuActiv, getUser,setCartList, setWishlistData, setCartCount }) {
       const navigate = useNavigate();
      const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -90,7 +90,10 @@ function AcauntMenu({ userMenuActiv, setUserMenuActiv, getUser }) {
                       getUser();
                       navigate("/");
                       setUserMenuActiv(false);
-               
+                     setCartList(null)
+                      setWishlistData(null)
+                      setCartCount(null)
+            
 
         }}    >
           <ListItemIcon>

@@ -8,6 +8,7 @@ function ButtonOne({variant,disableElevation,title, onClick}) {
      style={{
       backgroundColor:'#e72020ee',
 color:'white' 
+
      }}
      variant={variant} disableElevation={disableElevation} onClick={onClick}>
       {title}

@@ -1,0 +1,14 @@
+.CardSkleton {
+  width: 270px;
+  cursor: default;
+  border-radius: 12px;
+}
+
+.skeleton-img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.skeleton-content {
+  padding: 10px;
+}

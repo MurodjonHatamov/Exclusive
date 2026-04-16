@@ -5,7 +5,9 @@ import { useParams } from 'react-router-dom';
 import SkletonComponents from "../../components/skleton/SkletonComponents";
 import { useScrollToTop } from "../../hooks/useScrollToTop";
 
-function Categories({ getData, wishlistDataFunk, setModalActiv }) {
+function Categories({ getData, wishlistDataFunk, setModalActiv,wishlistData }) {
+  
+  
   useScrollToTop();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,6 +25,8 @@ function Categories({ getData, wishlistDataFunk, setModalActiv }) {
       .then((result) => {
         setProducts(result);
         setLoading(false);
+     
+        
       })
       .catch((error) => {
         console.error(error);
@@ -55,15 +59,27 @@ function Categories({ getData, wishlistDataFunk, setModalActiv }) {
           </div>
         ) : products.length > 0 ? (
           <div className="prodactCards">
-            {products.map((item) => (
-              <ProdactCard
+          {
+            products?.map((item)=>{
+         
+              
+              const isLiked = wishlistData?.some((wishItem) => wishItem?.id === item?.id);
+       
+              
+              return (
+                <ProdactCard
                 setModalActiv={setModalActiv}
                 wishlistDataFunk={wishlistDataFunk}
                 getData={getData}
                 key={item.id}
-                item={item}
+              
+                item={{...item, is_liked: isLiked}}
               />
-            ))}
+              )
+            })
+          }
+            
+          
           </div>
         ) : (
           <div className="empty-category">
